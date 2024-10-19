@@ -97,7 +97,8 @@ public class Main01 {
         schoolProfileImpl.displayProfile();
 
         File file1 = new File(System.getProperty("user.home") + "/Desktop/List.csv",
-                "StudentName", "TeacherName" );
+                "StudentName", "StudentAge", "StudentGender",
+                "TeacherName","TeacherAge", "TeacherGender");
         FileServiceImpl fileServiceImpl1 = new FileServiceImpl();
         fileServiceImpl1.displayFileContent(file1);
 

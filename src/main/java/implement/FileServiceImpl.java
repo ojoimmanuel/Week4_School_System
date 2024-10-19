@@ -29,17 +29,21 @@ public class FileServiceImpl implements FileService {
             System.out.println("\n*****STUDENT NAMES FROM FILE*****");
             for (CSVRecord csvRecord : csvRecords) {
                 String studentNames = csvRecord.get(file.getStudentNameHeader());
-                Student student = new Student(studentNames, 15, Gender.MALE);
+                String studentAge = csvRecord.get(file.getStudentAgeHeader());
+                String studentGender = csvRecord.get(file.getStudentGenderHeader());
+                Student student = new Student(studentNames, Integer.parseInt(studentAge), Gender.valueOf(studentGender.toUpperCase()));//Gender.MALE);
                 file.getStudentLists().add(student);
-                System.out.println(studentNames);
+                System.out.println(studentNames + ", Age " + studentAge + " Gender: " + studentGender);
             }
 
             System.out.println("\n*****TEACHER NAMES FROM FILE*****");
             for (CSVRecord csvRecord : csvRecords) {
                 String teacherNames = csvRecord.get(file.getTeacherNameHeader());
-                Teacher teacher = new Teacher(teacherNames, 15, Gender.FEMALE, CourseTaken.ENGLISH);
+                String teacherAges = csvRecord.get(file.getTeacherAgeHeader());
+                String teacherGender = csvRecord.get(file.getTeacherGenderHeader());
+                Teacher teacher = new Teacher(teacherNames, Integer.parseInt(teacherAges), Gender.valueOf(teacherGender.toUpperCase()), CourseTaken.ENGLISH);
                 file.getTeacherLists().add(teacher);
-                System.out.println(teacherNames);
+                System.out.println(teacherNames + ", Age: " + teacherAges + " Gender: " + teacherGender );
             }
 
         } catch (IOException e) {
