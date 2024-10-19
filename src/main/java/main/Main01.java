@@ -26,33 +26,45 @@ public class Main01 {
     public static void main(String[] args) {
 
         System.out.println();
-
         Principal principal = new Principal("Mr. Samuel", 50, Gender.MALE);
         PrincipalServiceImpl principalInfo = new PrincipalServiceImpl();
         principalInfo.display(principal);
 
+        File file1 = new File(System.getProperty("user.home") + "/Desktop/List.csv",
+                "StudentName", "StudentAge", "StudentGender",
+                "TeacherName","TeacherAge", "TeacherGender");
+        FileServiceImpl fileServiceImpl1 = new FileServiceImpl();
+
+        // Display content of the file
+        fileServiceImpl1.displayFileContent(file1);
+
         System.out.println();
 
-        Teacher teacher1 = new Teacher("Bola", 35, Gender.FEMALE);
+        // Get names, ages and genders of teachers from file and create teacher objects
+        Teacher teacher1 = new Teacher(file1.getTeacherLists().get(0).getName(), file1.getTeacherLists().get(0).getAge(), file1.getTeacherLists().get(0).getGender());
         Course course1 = new Course(CourseTaken.ENGLISH);
         CourseServiceImpl teacher1Course = new CourseServiceImpl();
         teacher1Course.teachCourse(teacher1, course1);
 
-        Teacher teacher2 = new Teacher("David", 37, Gender.MALE);
+        Teacher teacher2 = new Teacher(file1.getTeacherLists().get(1).getName(), file1.getTeacherLists().get(1).getAge(), file1.getTeacherLists().get(1).getGender());
         Course course2 = new Course(CourseTaken.MATHS);
         CourseServiceImpl teacher2Course = new CourseServiceImpl();
         teacher2Course.teachCourse(teacher2, course2);
 
         System.out.println();
 
-        Student student1 = new Student("Shade", 14, Gender.FEMALE);
+        //Get names, ages and genders from file to create student objects
+        Student studentHoldValue = file1.getStudentLists().get(0);  //container to reduce word length for student objects
+
+        Student student1 = new Student(studentHoldValue.getName(), studentHoldValue.getAge(), studentHoldValue.getGender());
         CourseServiceImpl student1Course = new CourseServiceImpl();
         ClassRoomServiceImpl student1Class = new ClassRoomServiceImpl();
         ClassRoom student1ClassRoom = new ClassRoom(Clas.CLASS_1);
         student1Course.takeCourse(student1, course1);
         student1Class.studentClass(student1, student1ClassRoom);
 
-        Student student2 = new Student("Rock", 16, Gender.MALE);
+        studentHoldValue = file1.getStudentLists().get(1);
+        Student student2 = new Student(studentHoldValue.getName(), studentHoldValue.getAge(), studentHoldValue.getGender());
         CourseServiceImpl student2Course = new CourseServiceImpl();
         student2Course.takeCourse(student2, course2);
         ClassRoom student2ClassRoom = new ClassRoom(Clas.CLASS_2);
@@ -96,20 +108,7 @@ public class Main01 {
 
         schoolProfileImpl.displayProfile();
 
-        File file1 = new File(System.getProperty("user.home") + "/Desktop/List.csv",
-                "StudentName", "StudentAge", "StudentGender",
-                "TeacherName","TeacherAge", "TeacherGender");
-        FileServiceImpl fileServiceImpl1 = new FileServiceImpl();
-        fileServiceImpl1.displayFileContent(file1);
-
-        System.out.println("\n **********TEST FUNCTIONS***********");
-        student1expelled.expelStudent(file1.getStudentLists().get(0), principal);
-        teacher1Course.teachCourse(file1.getTeacherLists().get(1), course1);
-        teacher2Course.teachCourse(file1.getTeacherLists().get(2), course2);
-
-
     }
-
 
  }
 
