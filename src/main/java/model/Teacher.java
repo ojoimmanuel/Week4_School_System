@@ -6,10 +6,10 @@ import enums.CourseTaken;
 
 public class Teacher extends Person {
 
-    CourseTaken courseTaken;
+//    CourseTaken courseTaken;
 
-    public Teacher(String name, int age, Gender gender, CourseTaken courseTaken) {
+    public Teacher(String name, int age, Gender gender) { //CourseTaken courseTaken) {
         super(name, age, gender);
-        this.courseTaken = courseTaken;
+//        this.courseTaken = courseTaken;
     }
 }

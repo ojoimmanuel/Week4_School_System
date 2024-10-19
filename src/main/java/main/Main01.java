@@ -33,12 +33,12 @@ public class Main01 {
 
         System.out.println();
 
-        Teacher teacher1 = new Teacher("Bola", 35, Gender.FEMALE, CourseTaken.ENGLISH);
+        Teacher teacher1 = new Teacher("Bola", 35, Gender.FEMALE);
         Course course1 = new Course(CourseTaken.ENGLISH);
         CourseServiceImpl teacher1Course = new CourseServiceImpl();
         teacher1Course.teachCourse(teacher1, course1);
 
-        Teacher teacher2 = new Teacher("David", 37, Gender.MALE, CourseTaken.MATHS);
+        Teacher teacher2 = new Teacher("David", 37, Gender.MALE);
         Course course2 = new Course(CourseTaken.MATHS);
         CourseServiceImpl teacher2Course = new CourseServiceImpl();
         teacher2Course.teachCourse(teacher2, course2);

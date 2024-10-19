@@ -41,7 +41,7 @@ public class FileServiceImpl implements FileService {
                 String teacherNames = csvRecord.get(file.getTeacherNameHeader());
                 String teacherAges = csvRecord.get(file.getTeacherAgeHeader());
                 String teacherGender = csvRecord.get(file.getTeacherGenderHeader());
-                Teacher teacher = new Teacher(teacherNames, Integer.parseInt(teacherAges), Gender.valueOf(teacherGender.toUpperCase()), CourseTaken.ENGLISH);
+                Teacher teacher = new Teacher(teacherNames, Integer.parseInt(teacherAges), Gender.valueOf(teacherGender.toUpperCase()));
                 file.getTeacherLists().add(teacher);
                 System.out.println(teacherNames + ", Age: " + teacherAges + " Gender: " + teacherGender );
             }
